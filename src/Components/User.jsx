@@ -9,8 +9,7 @@ function validateEmail(email) {
 }
 
 function User(props){
-      //todo.map(e=>console.log(e))
-    //const {user,userList,setUserList} = props;
+      
     const user = props.user;
     const {userList,setUserList} = props;
 
@@ -39,8 +38,7 @@ function User(props){
     }
     else{
       setisEditing(false);
-      console.log(editName);  
-      console.log(editEmail);
+      
      
       
       const newUserList = [];
@@ -51,8 +49,7 @@ function User(props){
           else newUserList.push(user);
       }
       setUserList(newUserList);
-      //props.setUserList(newUserList);
-      console.log("modified list = ",props.userList);
+      
 
     }
     }
@@ -83,23 +80,12 @@ function User(props){
       <div className={"Card"}>
         <div> Name: <h2>{name}</h2> Email: <h4> {email} </h4> </div>
         <br />
-         <center>To Do list: </center> <hr /> 
+         <center>To Do list: </center> <hr />
         <Todo user={props.user} todo={toDo} settoDo={settoDo} userList={userList} setUserList={setUserList}/>
         <button className={"button-primary"} onClick={()=>editAction()} >Edit</button> 
         <button className={"button-danger"} onClick={()=> {
-          // const newUser = [];
-          // for(let user of userList){
-          //   if(user.email!==email)newUser.push(user);
-          // }
-          // setUserList(newUser);
-          // console.log("see you want");
-          // console.log(newUser);
           const newUserList = userList.filter((user)=>user.email!==email);
-          console.log("filtered user list= ",newUserList);
-                    setUserList(newUserList);
-          
-          //setisEditing(false);
-          //console.log("see if changed= ",userList);
+          setUserList(newUserList);
         }
       }>Delete</button>
       </div>

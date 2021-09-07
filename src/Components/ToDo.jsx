@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { isElement } from "react-dom/test-utils";
+
 
 const Todo = (props)=>{
     //const {todo,settoDo} = props;
@@ -11,7 +11,6 @@ const Todo = (props)=>{
     
     function saveTask(itemIndex) {
         props.user.todo[itemIndex] = task;
-        console.log(task);
         setisModifying(false);
         setTask("");
     }
@@ -28,11 +27,13 @@ const Todo = (props)=>{
 
     return(
         <div>
+            <div className="hidden">
+                <hr />
             <ol>
        {props.user.todo.map((item,index)=><li key={index}>{item} <button onClick={()=>
         {
            const newList = (props.todo.filter(e=>e!==item));
-           console.log("new list = ",newList);
+           
            props.settoDo(newList);
            props.user.todo = newList;
 
@@ -43,16 +44,19 @@ const Todo = (props)=>{
     
         </li>)}
         <br />
+        
        <li>
            <input value={newTask} type="text" placeholder={"enter a task"} onChange={e=>setnewTaks(e.target.value)} /> <button className={"button"} onClick={()=>{
                if(newTask.trim(' ').length>0)props.user.todo.push(newTask);
-              // console.log(props.user.todo);
+              
                setnewTaks("");
             }
                
                } >Add Item</button>       
         </li>
+        
        </ol>
+       </div>
       </div>
     );
 }

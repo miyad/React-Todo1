@@ -21,7 +21,7 @@ const AddUser = ({userList,setuserList})=>{
         }
         else{
             setuserList(userList.concat({name,email,todo:[]}))
-            console.log(validateEmail(email));
+            
             setName("");
             setEmail("");
             setErrMessage("");
